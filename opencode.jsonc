@@ -1,6 +1,6 @@
 {
     "agents": [
-        ".opencode/agents/SecurityReview.md"
+        ".opencode/agents/RedTeamer.md"
     ],
     "provider": {
         "name": "auto",

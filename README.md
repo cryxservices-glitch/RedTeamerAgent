@@ -5,6 +5,8 @@
 ██║░░██║███████╗██████╔╝░░░██║░░░███████╗██║░░██║██║░╚═╝░██║███████╗██║░░██║
 ╚═╝░░╚═╝╚══════╝╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═╝
 
+<p align="center"><em>Created by <strong>Aporia</strong> — universal vulnerability detection engine</em></p>
+
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/SAST-Full-6C5CE7?style=flat-square" alt="SAST"></a>
   <a href="#"><img src="https://img.shields.io/badge/DAST-Patterns-E17055?style=flat-square" alt="DAST"></a>
@@ -38,7 +40,7 @@ Not a prompt wrapper — a complete security engineering framework compiled into
 
 ### What Makes This Different
 
-| Trait | Typical Agent | SecurityReview |
+| Trait | Typical Agent | RedTeamer |
 |---|---|---|
 | Detection | Prompt-level rules | 350+ language-specific detection patterns with real code signatures |
 | Exploitation | "Check for X" | Full payload libraries, attack chains, and safe verification procedures |
@@ -129,19 +131,19 @@ Phase 6 — Reporting
 
 ```bash
 # Clone the repository
-git clone https://github.com/cryxservices-glitch/SecurityReviewAgent.git
+git clone https://github.com/cryxservices-glitch/RedTeamerAgent.git
 
 # Run a full audit
-@SecurityReview audit this codebase for vulnerabilities
+@RedTeamer audit this codebase for vulnerabilities
 
 # Scan a specific file
-@SecurityReview find vulnerabilities in src/api/users.py
+@RedTeamer find vulnerabilities in src/api/users.py
 
 # Get a fix for a specific vulnerability class
-@SecurityReview how to fix SQL injection in this Go handler
+@RedTeamer how to fix SQL injection in this Go handler
 
 # Run a secrets scan
-@SecurityReview scan for secrets in the entire repository
+@RedTeamer scan for secrets in the entire repository
 ```
 
 ---
@@ -154,21 +156,21 @@ git clone https://github.com/cryxservices-glitch/SecurityReviewAgent.git
 
 **Global**: Copy the agent to your global OpenCode configuration:
 ```bash
-cp .opencode/agents/SecurityReview.md ~/.config/opencode/agents/
+cp .opencode/agents/RedTeamer.md ~/.config/opencode/agents/
 ```
 
 ### Commands
 
 | Command | Description |
 |---|---|
-| `@SecurityReview audit <path>` | Full security audit of a codebase or directory |
-| `@SecurityReview scan <file>` | Scan a specific file for vulnerabilities |
-| `@SecurityReview test <type> <path>` | Test for a specific vulnerability class (sqli, xss, ssrf, etc.) |
-| `@SecurityReview fix <finding-id>` | Generate a production-ready fix for a previous finding |
-| `@SecurityReview exploit <type>` | Show exploitation payloads and verification steps for a vulnerability class |
-| `@SecurityReview report` | Generate a structured security report for the current session |
-| `@SecurityReview deps <path>` | Dependency vulnerability scan against known CVEs |
-| `@SecurityReview secrets <path>` | Deep secrets scan (regex + entropy + git history) |
+| `@RedTeamer audit <path>` | Full security audit of a codebase or directory |
+| `@RedTeamer scan <file>` | Scan a specific file for vulnerabilities |
+| `@RedTeamer test <type> <path>` | Test for a specific vulnerability class (sqli, xss, ssrf, etc.) |
+| `@RedTeamer fix <finding-id>` | Generate a production-ready fix for a previous finding |
+| `@RedTeamer exploit <type>` | Show exploitation payloads and verification steps for a vulnerability class |
+| `@RedTeamer report` | Generate a structured security report for the current session |
+| `@RedTeamer deps <path>` | Dependency vulnerability scan against known CVEs |
+| `@RedTeamer secrets <path>` | Deep secrets scan (regex + entropy + git history) |
 
 ### Depth Levels
 
@@ -193,7 +195,7 @@ Every finding follows a structured standard compatible with SARIF for GitHub Cod
 │ OWASP:       A03:2021-Injection                         │
 │ CVSS:        9.8 (AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H) │
 │ File:        src/api/users.py:42                        │
-│ Tool:        SecurityReview Agent                       │
+│ Tool:        RedTeamer Agent                       │
 ├─────────────────────────────────────────────────────────┤
 │ Description:                                             │
 │ User input from the 'id' query parameter is directly     │
@@ -235,8 +237,8 @@ repos:
   - repo: local
     hooks:
       - id: security-review
-        name: Security Review
-        entry: opencode run agent SecurityReview
+        name: RedTeamer
+        entry: opencode run agent RedTeamer
         language: system
         types: [python, javascript, java, csharp, go, rust]
         args: ["--format", "sarif", "--output", "security-report.sarif"]
@@ -246,7 +248,7 @@ repos:
 
 ```yaml
 # .github/workflows/security-review.yml
-name: Security Review
+name: RedTeamer
 on:
   push:
     branches: [main]
@@ -262,9 +264,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Security Review
+      - name: RedTeamer
         run: |
-          opencode run agent SecurityReview \
+          opencode run agent RedTeamer \
             --scan-dir . \
             --severity-threshold medium \
             --format sarif \
@@ -283,7 +285,7 @@ jobs:
 security-review:
   stage: test
   script:
-    - opencode run agent SecurityReview --scan-dir . --format gl-sast --output gl-sast-report.json
+    - opencode run agent RedTeamer --scan-dir . --format gl-sast --output gl-sast-report.json
   artifacts:
     reports:
       sast: gl-sast-report.json
@@ -297,10 +299,10 @@ security-review:
 ## Repository Structure
 
 ```
-SecurityReviewAgent/
+RedTeamerAgent/
 +-- .opencode/
 |   +-- agents/
-|       +-- SecurityReview.md       # OpenCode agent — full security engine
+|       +-- RedTeamer.md       # OpenCode agent — full security engine
 +-- security-review/                # Knowledge base framework
 |   +-- vulnerabilities/
 |   |   +-- owasp-top10.md          # OWASP Top 10 deep reference
