@@ -109,7 +109,7 @@ Phase 6 — Reporting
 ## Language Support
 
 | Language | Frameworks | Vulnerability Coverage |
-|---|---|---|---|
+|---|---|---|
 | **Python** | Django, Flask, FastAPI, Starlette, Tornado, aiohttp | SQLi, SSTI, XSS, CMDi, Mass Assignment, Pickle RCE, Path Traversal, XXE, YAML Deser, Prototype Pollution via dict |
 | **JavaScript/TS** | Express, React, Vue, Angular, Svelte, Next, Nuxt, Nest, Fastify, Koa | XSS (all contexts), Prototype Pollution, NoSQLi, CMDi, eval, JWT attacks, SSRF, Prototype Pollution, CSP bypass |
 | **Java** | Spring Boot, Jakarta, Micronaut, Quarkus, Android | SQLi, SpEL inj, Path Traversal, Deserialization (7+ chains), XXE, JNDI inj, Auth Bypass, Log4Shell, LDAP inj |
