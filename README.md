@@ -1,11 +1,14 @@
+<div align="center">
+<pre>
 ██████╗░███████╗██████╗░████████╗███████╗░█████╗░███╗░░░███╗
 ██╔══██╗██╔════╝██╔══██╗╚══██╔══╝██╔════╝██╔══██╗████╗░████║
 ██████╔╝█████╗░░██║░░██║░░░██║░░░█████╗░░███████║██╔████╔██║
 ██╔══██╗██╔══╝░░██║░░██║░░░██║░░░██╔══╝░░██╔══██║██║╚██╔╝██║
 ██║░░██║███████╗██████╔╝░░░██║░░░███████╗██║░░██║██║░╚═╝░██║
 ╚═╝░░╚═╝╚══════╝╚═════╝░░░░╚═╝░░░╚══════╝╚═╝░░╚═╝╚═╝░░░░░╚═╝
-
-<p align="center"><em>Created by <strong>Aporia</strong> — universal vulnerability detection engine</em></p>
+</pre>
+<p><em>Created by <strong>Aporia</strong> — universal vulnerability detection engine</em></p>
+</div>
 
 <p align="center">
   <a href="#"><img src="https://img.shields.io/badge/SAST-Full-6C5CE7?style=flat-square" alt="SAST"></a>
